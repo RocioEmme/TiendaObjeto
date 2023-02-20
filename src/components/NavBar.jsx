@@ -18,7 +18,7 @@ import difusores from "../assets/difusores.png";
 
 const NavBar = () => {
   return (
-    <fragment className="navBar">
+    <div className="navBar">
       <Box mt="10px" ml="20px" color="#63646b">
         <Menu>
           <Text>
@@ -118,7 +118,7 @@ const NavBar = () => {
       </div>
 
       <CartWidget />
-    </fragment>
+    </div>
   );
 };
 
