@@ -27,22 +27,22 @@ const NavBar = () => {
       </div>
 
       <div className="menuDesplegable">
-          <Box mt="10px" ml="20px" color="#63646b">
+          <Box color="#63646b">
             <Menu>
               <Text>
                 <MenuButton
                   as={Button}
                   border="2px"
-                  borderColor="white"
+                  borderColor= "#62636a"
                   fontSize="20px"
-                  color="white"
+                  color="#62636a"
                   bg="#e1d0d1"
                   _hover={{
                     bg: "white",
                     color: "#e1d0d1",
                   }}
                 >
-                  Categorias
+                  Categorías
                 </MenuButton>{" "}
               </Text>
               <MenuList>
