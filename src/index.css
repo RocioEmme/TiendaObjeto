@@ -10,17 +10,16 @@
 }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    background-color: #e1d0d1;
-    height: 100vh;
+    background-color: #ddd9ca;
+    height: 200vh;
 }
 
 .navBar {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    background-color: #e1d0d1;
+    padding-top: 20px;
+    background-color: #7f918e;
+    padding-bottom: 20px;
 }
 
 .logo {
@@ -46,16 +45,19 @@
     font-size: 35px;
 }
 
-.saludo {
-    color: white;
-    font-size: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-direction: center;
-}
-
 .menuDesplegable {
     margin-top: 15px;
-    margin-right: 150px;
+    display: flex;
+    gap: 10px;
+    margin-right: 200px;
+}
+
+
+.tituloSecuendario{
+    color: #62636a;
+    margin-top: 20px;
+    text-decoration: underline;
+    font-size: 25px;
+    font-weight: bold;
+    
 }
