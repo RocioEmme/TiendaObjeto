@@ -2,14 +2,26 @@ import Data from "../data.json";
 import { Center } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
+import { useEffect, useState } from "react";
 
 
 const ItemListContainer = () => {
+  const [dataAMostrar, setDataAMostrar] = useState(undefined);
+  const {categorias} = useParams();
 
-const {categorias} = useParams();
+  useEffect(() => {
+    mostrarCategoria()
+  }, [categorias])
 
-  const categoriasFilt = Data.filter((producto)=> producto.categoria === categorias);
-  console.log(categoriasFilt);
+
+  const mostrarCategoria = () => {
+    if (categorias) {
+      const categoriasFilt = Data.filter((producto)=> producto.categoria === categorias);
+      setDataAMostrar(categoriasFilt) // mostrar productos filtrados por categoria
+    } else {
+      setDataAMostrar(Data) // mostrar todos los productos
+    }
+  }
 
   return(
     <div>
@@ -17,7 +29,7 @@ const {categorias} = useParams();
       { !categorias ? <h2>NUESTROS PRODUCTOS</h2> : <h2> {`${categorias}`}</h2> }
       </Center>
 
-      {categorias? <ItemList productos={categoriasFilt} /> : <ItemList productos={Data} /> }
+      <ItemList productos={dataAMostrar} />
     
     </div>
  

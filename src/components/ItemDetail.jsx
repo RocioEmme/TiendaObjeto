@@ -10,20 +10,13 @@ import {
   Center,
   Flex,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
 
 
-const ItemDetail = ({ data }) => {
-
-    const { id } = useParams();
-
-    const df = data.filter((prod) => prod.id == id);
-
+const ItemDetail = ({ prod }) => {
   return (
     <>
-      {df.map((prod) => (
-        <div key={prod.id}>
+      {prod && (<div key={prod.id}>
             <Center p="1rem">
                 <Card height="400px" width="400px" alignItems="center" justifyContent="center" >
                 <CardBody> 
@@ -52,7 +45,7 @@ const ItemDetail = ({ data }) => {
                 </Card>
             </Center>
         </div>
-      ))}
+      )}
     </>
   );
 };
