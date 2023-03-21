@@ -4,39 +4,38 @@ import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 
-
 const ItemListContainer = () => {
   const [dataAMostrar, setDataAMostrar] = useState(undefined);
-  const {categorias} = useParams();
+  const { categorias } = useParams();
 
   useEffect(() => {
-    mostrarCategoria()
-  }, [categorias])
-
+    mostrarCategoria();
+  }, [categorias]);
 
   const mostrarCategoria = () => {
     if (categorias) {
-      const categoriasFilt = Data.filter((producto)=> producto.categoria === categorias);
-      setDataAMostrar(categoriasFilt) // mostrar productos filtrados por categoria
+      const categoriasFilt = Data.filter(
+        (producto) => producto.categoria === categorias
+      );
+      setDataAMostrar(categoriasFilt); // mostrar productos filtrados por categoria
     } else {
-      setDataAMostrar(Data) // mostrar todos los productos
+      setDataAMostrar(Data); // mostrar todos los productos
     }
-  }
+  };
 
-  return(
+  return (
     <div>
       <Center className="tituloSecuendario">
-      { !categorias ? <h2>NUESTROS PRODUCTOS</h2> : <h2> {`${categorias}`}</h2> }
+        {!categorias ? (
+          <h2>NUESTROS PRODUCTOS</h2>
+        ) : (
+          <h2> {`${categorias}`}</h2>
+        )}
       </Center>
 
       <ItemList productos={dataAMostrar} />
-    
     </div>
- 
   );
-
-
-
 };
 
 export default ItemListContainer;
