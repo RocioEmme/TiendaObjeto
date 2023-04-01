@@ -9,7 +9,6 @@ const Welcome = () => {
           <Image src={fotoPortada} alt="foto de portada" />
         </Box>
       </Center>
-
     </div>
   );
 };

@@ -8,14 +8,14 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({ stock, onAdd, id, precio, imagen, nombre }) => {
   const [count, setCount] = useState(1);
 
-  const addQty = () => {
+  const sumarProductos = () => {
     setCount(count + 1);
   };
 
-  const substractQty = () => {
+  const restarProductos = () => {
     setCount(count - 1);
   };
 
@@ -36,21 +36,24 @@ const ItemCount = ({stock}) => {
             color="white"
             bg="#7f918e"
             icon={<MinusIcon />}
-            onClick={substractQty}
+            onClick={restarProductos}
           />
         )}
         <Center>
           <Button
+            disabled={stock <= 0}
+            onClick={() => onAdd(id, count, precio, imagen, nombre)}
             variant="solid"
             color="white"
             bg="#7f918e"
+            fontSize="md"
             _hover={{
               bg: "white",
               color: "#7f918e",
               border: "2px",
             }}
           >
-            Agregar al carrito {count}
+            Agregar al carrito: {count}
           </Button>
         </Center>
         {count < stock ? (
@@ -58,7 +61,7 @@ const ItemCount = ({stock}) => {
             color="white"
             bg="#7f918e"
             icon={<AddIcon />}
-            onClick={addQty}
+            onClick={sumarProductos}
           />
         ) : (
           <Tooltip label="Maximo stock permitido" placement="right">

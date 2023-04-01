@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
-import Data from "../data.json"
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
-  const [prod, setProd] = useState(undefined);
+  const [producto, setProducto] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    filtrarProducto()
-  }, [id])
-
-  const filtrarProducto = () => {
-    const prod = Data.find((prod) => prod.id == id); // producto
-    setProd(prod)
-  }
+    const db = getFirestore();
+    const unItem = doc(db, "bazar", `${id}`);
+    getDoc(unItem).then((snapshot) => {
+      const docs = snapshot.data();
+      setProducto(docs);
+    });
+  }, []);
 
   return (
     <>
-      <ItemDetail prod={prod}/>
+      <ItemDetail producto={producto} />
     </>
-  )
-}
+  );
+};
 
 export default ItemDetailContainer;

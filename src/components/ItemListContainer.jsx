@@ -1,25 +1,38 @@
-import Data from "../data.json";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { Center } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 
 const ItemListContainer = () => {
-  const [dataAMostrar, setDataAMostrar] = useState(undefined);
+  const [productos, setProductos] = useState([]);
   const { categorias } = useParams();
 
   useEffect(() => {
-    mostrarCategoria();
+    mostrarProductos();
   }, [categorias]);
 
-  const mostrarCategoria = () => {
+  const mostrarProductos = async () => {
+
+    /* trago toda la información de mi base de datos */
+    const db = getFirestore();
+
+    const itemsCollection = collection(db, "bazar");
+    const snapshot = await getDocs(itemsCollection);
+    const productosBazar = snapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+
+    /* filtro por categorias */
+
     if (categorias) {
-      const categoriasFilt = Data.filter(
+      const categoriasFilt = productosBazar.filter(
         (producto) => producto.categoria === categorias
       );
-      setDataAMostrar(categoriasFilt); // mostrar productos filtrados por categoria
+      setProductos(categoriasFilt);
     } else {
-      setDataAMostrar(Data); // mostrar todos los productos
+      setProductos(productosBazar);
     }
   };
 
@@ -32,8 +45,7 @@ const ItemListContainer = () => {
           <h2> {`${categorias}`}</h2>
         )}
       </Center>
-
-      <ItemList productos={dataAMostrar} />
+      <ItemList productos={productos} />
     </div>
   );
 };

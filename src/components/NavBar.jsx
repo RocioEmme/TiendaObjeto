@@ -21,7 +21,10 @@ const NavBar = () => {
   return (
     <div className="navBar">
       <div className="logoTitulo">
-        <Link to={"/"}> <img src={logo} className="logo"/> </Link>
+        <Link to={"/"}>
+          {" "}
+          <img src={logo} className="logo" />{" "}
+        </Link>
         <Text color="#62636a" fontSize="30px" fontWeight="extrabold">
           <span>TIENDA OBJETO</span>
         </Text>
@@ -29,34 +32,13 @@ const NavBar = () => {
 
       <div className="menuDesplegable">
         <Box color="#63646b">
-            <Menu>
-              <Text>
-                <Link to={"/productos"}>
+          <Menu>
+            <Text>
+              <Link to={"/productos"}>
                 <MenuButton
                   as={Button}
                   border="2px"
-                  borderColor= "#62636a"
-                  fontSize="20px"
-                  color="#62636a"
-                  bg="#7f918e"
-                  _hover={{
-                    bg: "white",
-                    color: "#7f918e",
-                  }}
-                  >
-                  Productos
-                </MenuButton>    
-              </Link>
-              </Text>
-              </Menu>
-          </Box>
-          <Box color="#63646b">
-            <Menu>
-              <Text>
-                <MenuButton
-                  as={Button}
-                  border="2px"
-                  borderColor= "#62636a"
+                  borderColor="#62636a"
                   fontSize="20px"
                   color="#62636a"
                   bg="#7f918e"
@@ -65,11 +47,32 @@ const NavBar = () => {
                     color: "#7f918e",
                   }}
                 >
-                  Categorías
+                  Productos
                 </MenuButton>
-              </Text>
-              <MenuList>
-                <Link to={`/categorias/${"Cocina"}`}>
+              </Link>
+            </Text>
+          </Menu>
+        </Box>
+        <Box color="#63646b">
+          <Menu>
+            <Text>
+              <MenuButton
+                as={Button}
+                border="2px"
+                borderColor="#62636a"
+                fontSize="20px"
+                color="#62636a"
+                bg="#7f918e"
+                _hover={{
+                  bg: "white",
+                  color: "#7f918e",
+                }}
+              >
+                Categorías
+              </MenuButton>
+            </Text>
+            <MenuList>
+              <Link to={`/categorias/${"Cocina"}`}>
                 <MenuItem
                   minH="48px"
                   _hover={{
@@ -87,8 +90,8 @@ const NavBar = () => {
                   />
                   <span>Cocina</span>
                 </MenuItem>
-                  </Link>
-                  <Link to={`/categorias/${"Iluminacion"}`}>
+              </Link>
+              <Link to={`/categorias/${"Iluminacion"}`}>
                 <MenuItem
                   minH="40px"
                   _hover={{
@@ -96,18 +99,18 @@ const NavBar = () => {
                     color: "#7f918e",
                     fontWeight: "semibold",
                   }}
-                  >
+                >
                   <Image
                     boxSize="2rem"
                     borderRadius="full"
                     src={iluminacion}
                     alt="Icono de Iluminación"
                     mr="12px"
-                    />
+                  />
                   <span>Iluminación</span>
                 </MenuItem>
-                </Link>
-                <Link to={`/categorias/${"Organizadores"}`}>
+              </Link>
+              <Link to={`/categorias/${"Organizadores"}`}>
                 <MenuItem
                   minH="40px"
                   _hover={{
@@ -115,18 +118,18 @@ const NavBar = () => {
                     color: "#7f918e",
                     fontWeight: "semibold",
                   }}
-                  >
+                >
                   <Image
                     boxSize="2rem"
                     borderRadius="full"
                     src={organizadores}
                     alt="Icono de Organizadores"
                     mr="12px"
-                    />
+                  />
                   <span>Organizadores</span>
                 </MenuItem>
-                    </Link>
-                    <Link to={`/categorias/${"Difusores"}`}>
+              </Link>
+              <Link to={`/categorias/${"Difusores"}`}>
                 <MenuItem
                   minH="40px"
                   _hover={{
@@ -134,23 +137,24 @@ const NavBar = () => {
                     color: "#7f918e",
                     fontWeight: "semibold",
                   }}
-                  >
+                >
                   <Image
                     boxSize="2rem"
                     borderRadius="full"
                     src={difusores}
                     alt="Icono de Difusores"
                     mr="12px"
-                    />
+                  />
                   <span>Difusores</span>
                 </MenuItem>
-                    </Link>
-              </MenuList>
-            </Menu>
-          </Box>
-        </div>
-        
-      <CartWidget />
+              </Link>
+            </MenuList>
+          </Menu>
+        </Box>
+      </div>
+      <Link to={"/cart"}>
+        <CartWidget />
+      </Link>
     </div>
   );
 };

@@ -27,6 +27,11 @@
     border-radius: 40%;
 }
 
+.logo:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .logoTitulo {
     display: flex;
     gap: 10px;
@@ -37,11 +42,19 @@
 .carrito {
     margin-right: 30px;
     margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .material-symbols-outlined {
     color: #62636a;
     font-size: 35px;
+}
+
+.numeroCarrito {
+    color: #62636a;
+    font-size: 30px;
 }
 
 .menuDesplegable {
@@ -51,11 +64,53 @@
     margin-right: 200px;
 }
 
-
-.tituloSecuendario{
+.tituloSecuendario {
     color: #62636a;
     margin-top: 20px;
     text-decoration: underline;
     font-size: 25px;
     font-weight: bold;
+}
+
+.toCart {
+    text-decoration: none;
+    color: #7f918e;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.toCart:hover {
+    color: white;
+    border: 2px;
+    background-color: #7f918e;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.carritoVacio {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carritoVacio p {
+    color: #62636a;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.carritoVacio button {
+    text-decoration: none;
+    color: white;
+    background-color: #7f918e;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.carritoVacio button:hover {
+    color: #7f918e;
+    background-color: white;
 }
